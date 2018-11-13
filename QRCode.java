@@ -1,7 +1,10 @@
 import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
+
 class QRCode {
     private int symbol[][] = new int[21][21];
-    private int binaryData[] = new int[72];
+    List<Integer> binData = new ArrayList<Integer>();
     private int cursor = 0;
 
     public QRCode(){
@@ -33,27 +36,36 @@ class QRCode {
     }
 
     public void setMeta(int modeIndicator, int errLvIndicator){
-        int mode[] = {0,0,1,0};
-        System.arraycopy(mode,0,binaryData,0,mode.length);
-        cursor += mode.length;
+        //int mode[] = {0,0,1,0};
+        List<Integer> mode = new ArrayList<Integer>();
+        mode.asList(0,0,1,0);
+        binData.add(0,mode);
+        //System.arraycopy(mode,0,binaryData,0,mode.length);
+        cursor += mode.size();
 
-        int errLv[] = {0,0,0,0,0,1,0,0,0};
-        System.arraycopy(errLv,0,binaryData,cursor,errLv.length);
-        cursor += errLv.length;
+        //int errLv[] = {0,0,0,0,0,1,0,0,0};
+        List<Integer> errLv = new ArrayList<Integer>();
+        errLv.asList(0,0,0,0,0,1,0,0,0);
+        binData.add(cursor,errLv);
+        //System.arraycopy(errLv,0,binaryData,cursor,errLv.length);
+        cursor += errLv.size();
     }
     public void convertBinary(char rawdata[]){
         for(int i = 0; i < rawdata.length; i += 2){
-            //int dec = 10 * 45 + 11;
+            List<Integer> bin = new ArrayList<Integer>();
             int dec = value(rawdata[i]) * 45 + value(rawdata[i+1]);
-            int bin[] = {0,0,0,0,0,0,0,0,0,0,0};
+            //int bin[] = {0,0,0,0,0,0,0,0,0,0,0};
+            bin.asList(0,0,0,0,0,0,0,0,0,0,0);
             for(int j = 0; dec > 0; j++){
-                bin[10 - j] = dec % 2;
+                //bin[10 - j] = dec % 2;
+                bin.set(10-j,dec % 2);
                 dec = dec / 2;
             }
-            System.arraycopy(bin,0,binaryData,cursor,bin.length);
-            cursor += bin.length;
+            //System.arraycopy(bin,0,binaryData,cursor,bin.length);
+            binData.add(cursor,bin);
+            cursor += bin.size();
         }
-        System.out.println(Arrays.toString(binaryData));    //DEBUG
+        System.out.println(Arrays.toString(binData));    //DEBUG
     }
 
     public void setSymbolVersion(){

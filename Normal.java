@@ -15,6 +15,5 @@ public class Normal {
             }
             System.out.print("\n");
         }
-
     }
 }
