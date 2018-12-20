@@ -7,8 +7,8 @@ class Service{
     }
 
     public void generate(){
-        QRCoce qr = new QRCode();
-        int symbol[][] = qr.getQRCode();
+        QRCode qr = new QRCode();
+        int symbol[][] = qr.getSymbol();
         shower.show(symbol);
     }
 }

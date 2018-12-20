@@ -4,7 +4,7 @@ class BinData{
     List<Integer> binData;
     char plaindata[];
     
-    public BinData(){
+    BinData(){
         binData = new ArrayList<Integer>();
         char rawdata[] = {'A','B','C','D','E','1','2','3'};
         System.arraycopy(rawdata,0,plaindata,0,rawdata.length);        

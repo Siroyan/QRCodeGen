@@ -1,25 +1,25 @@
 import java.util.*;
 
-class SymbolData{
-    List<Integer> symbolData;
-    public SymbolData(){
-        symbolData = new ArrayList<Integer>();
+class CodeData{
+    List<Integer> codeData;
+    CodeData(){
+        codeData = new ArrayList<Integer>();
     }
     public void setData(){
         ModeData mode = new ModeData();
         ErrorLevelData errLv = new ErrorLevelData();
         BinData bin = new BinData();
         for(int n : mode.getModeList()){
-            symbolData.add(n);
+            codeData.add(n);
         }
         for(int n : errLv.getErrorLevelList()){
-            symbolData.add(n);
+            codeData.add(n);
         }
         for(int n : bin.getBinDataList()){
-            symbolData.add(n);
+            codeData.add(n);
         }
     }
-    public List<Integer> getSymbol(){
-        return symbolData;
+    public List<Integer> getCodeData(){
+        return codeData;
     }
 }

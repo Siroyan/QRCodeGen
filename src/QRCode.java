@@ -1,11 +1,9 @@
-import java.util.Arrays;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /* This class make a QRCode from binary data. */
 class QRCode {
     int symbol[][] = new int[21][21];
-    public QRCode(){
+    QRCode(){
         int symbolBase[][] = {
             {1,1,1,1,1,1,1,0,0,0,0,0,0,0,1,1,1,1,1,1,1},
             {1,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,1},
@@ -31,7 +29,13 @@ class QRCode {
         };
         System.arraycopy(symbolBase,0,symbol,0,symbolBase.length);
     }
-    public int[][] getQRCode(){
+
+    public void makeSymbol(){
+        //TODO : make symbol from code data    
+    }
+
+    public int[][] getSymbol(){
+
         return symbol;
     }
 }
