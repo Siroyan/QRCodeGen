@@ -1,19 +1,19 @@
 import java.util.*;
 
 class BinData{
-    List<Integer> binData;
-    char plaindata[];
+    private List<Integer> binData = new ArrayList<Integer>();
+    private List<Character> plaindata = new ArrayList<Character>();
     
-    BinData(){
-        binData = new ArrayList<Integer>();
-        char rawdata[] = {'A','B','C','D','E','1','2','3'};
-        System.arraycopy(rawdata,0,plaindata,0,rawdata.length);        
+    BinData(List<Character> rawData){
+        for(char c : rawData){
+            plaindata.add(c);
+        }
     }
 
     public List<Integer> getBinDataList(){
-        for(int i = 0; i < plaindata.length; i += 2){
+        for(int i = 0; i < plaindata.size(); i += 2){
             List<Integer> bin = new ArrayList<Integer>(Arrays.asList(0,0,0,0,0,0,0,0,0,0,0));
-            int dec = value(plaindata[i]) * 45 + value(plaindata[i+1]);
+            int dec = value(plaindata.get(i)) * 45 + value(plaindata.get(i+1));
             for(int j = 0; dec > 0; j++){
                 bin.set(10-j,dec % 2);
                 dec = dec / 2;
@@ -22,11 +22,6 @@ class BinData{
                 binData.add(n);
             }
         }
-        /*
-        for(int str : binData){
-            System.out.print(str);
-        }
-        */
         return binData;
     }
 

@@ -8,7 +8,8 @@ class Service{
 
     public void generate(){
         QRCode qr = new QRCode();
-        int symbol[][] = qr.getSymbol();
-        shower.show(symbol);
+        qr.makeSymbol();
+        //int symbol[][] = qr.getSymbol();
+        //shower.show(symbol);
     }
 }
